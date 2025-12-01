@@ -1,6 +1,6 @@
 # AOC 2025
 
-- [X] [Day 1](Day 1/README/.md)
+- [X] [Day 1](Day_1/README/.md)
 - [ ] Day 2
 - [ ] Day 3
 - [ ] Day 4
