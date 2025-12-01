@@ -1,5 +1,5 @@
-day1p1: main.c
-	gcc main.c -o $@
+day1p1: day1p1.c
+	gcc $@.c -o $@
 
 test_p1: day1p1 test.txt
 	cat test.txt | ./day1p1
