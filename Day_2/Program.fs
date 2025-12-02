@@ -1,7 +1,7 @@
 ﻿open System
 
 // Figure out - is this ID valid?
-let is_invalid (i:Int64) = 
+let is_invalid_part1 (i:Int64) = 
   let s = i.ToString();
   let pivot = (s.Length/2);
   let l = s[0..(pivot - 1)];
@@ -9,9 +9,9 @@ let is_invalid (i:Int64) =
   l.Equals(r)
 
 // Sum all the invalid IDs
-let sum_invalid ((lb, ub): Int64*Int64) =
+let sum_invalid ((lb, ub): Int64*Int64) f =
   seq { lb .. 1L .. ub }
-  |> Seq.filter is_invalid
+  |> Seq.filter f
   |> Seq.fold (fun a b -> a+b) 0L
   
 // Split input range and parse integers
@@ -25,11 +25,13 @@ let get_ranges (s: string) =
   s.Split ","
   |> Array.map get_range
 
+let input = stdin.ReadLine()
+
 // Run above steps to get the sum of invalid IDs.
-let data =
-  stdin.ReadLine()
-  |> get_ranges
-  |> Array.map sum_invalid
+let part1 =
+  get_ranges input
+  |> Array.map (fun rng -> sum_invalid rng is_invalid_part1)
   |> Array.fold (fun a b -> a + b) 0L
 
-printfn "Part 1: %A" data
+printfn "Part 1: %A" part1
+
