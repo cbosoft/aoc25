@@ -12,3 +12,6 @@ Find the maximum value 2 digit integer that can be constructed from pairing two 
 
 # Part 2
 Find the maximum value 12 digit integer that can be constructed by concatenating digits of a string together.
+
+# Go thoughts
+Go is pretty cool - super stripped back language but still really nice. Garbage collected which is odd? The compiler isn't the nicest, but the language server (which actually works on linux unlike dotnet's one) is amazing.
