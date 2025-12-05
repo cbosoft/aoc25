@@ -4,7 +4,7 @@
 - [X] [Day 2](Day_2/README.md)
 - [X] [Day 3](Day_3/README.md)
 - [X] [Day 4](Day_4/README.md)
-- [ ] Day 5
+- [X] [Day 5](Day_5/README.md)
 - [ ] Day 6
 - [ ] Day 7
 - [ ] Day 8
