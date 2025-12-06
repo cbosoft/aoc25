@@ -1,13 +1,13 @@
 %.o: %.cbl
 	cobc -c $^
 
-day6: day6.cbl parse-input-row.o
+day6p1: day6p1.cbl parse-input-row.o
 	cobc -x $^
 
-test: day6
-	@echo part1 | cat - test.txt | ./day6
-	@#echo part2 | cat - test.txt | ./day6
+test: day6p1
+	@cat test.txt | ./day6p1
+	@#cat test.txt | ./day6p2
 
-run: day6
-	@echo part1 | cat - input.txt | ./day6
-	@#echo part2 | cat - input.txt | ./day6
+run: day6p1
+	@cat input.txt | ./day6p1
+	@#cat input.txt | ./day6p2

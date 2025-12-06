@@ -25,23 +25,6 @@
        01 WS-T-O.
            03 WS-O-VALUE PIC X(1) OCCURS 1000 TIMES.
        PROCEDURE DIVISION.
-       01-MAIN.
-      * PART 1 OR 2?
-           ACCEPT WS-PART-NO FROM STDIN.
-           IF WS-PART-NO EQUAL "part1"
-             GO TO 10-PART1
-           ELSE
-             IF WS-PART-NO EQUAL "part2"
-               GO TO 20-PART2
-             ELSE
-               DISPLAY "UNKNOWN PART >" WS-PART-NO "<"
-               GO TO 99-END
-             END-IF
-           END-IF.
-           DISPLAY WS-PART-NO.
-
-       10-PART1.
-      * READ IN FIRST ROWS: OPERANDS
            ACCEPT WS-ROW FROM STDIN.
            CALL "PARSE-INPUT-ROW" USING WS-ROW, WS-ICOL, WS-T-A.
            ACCEPT WS-ROW FROM STDIN.
@@ -91,11 +74,4 @@
            END-PERFORM.
            MOVE WS-TOTAL TO WS-TOTAL-STR.
            DISPLAY "Total: " WS-TOTAL-STR.
-           GO TO 99-END.
-
-       20-PART2.
-           DISPLAY "Part2 not implemented".
-           GO TO 99-END.
-
-       99-END.
            STOP RUN.
