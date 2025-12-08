@@ -8,9 +8,9 @@ day6p2: day6p2.cbl meas-cw.o
 	cobc -x $^
 
 test: day6p1 day6p2
-	@#cat test.txt | ./day6p1
+	@cat test.txt | ./day6p1
 	@cat test.txt | ./day6p2
 
 run: day6p1 day6p2
-	@#cat input.txt | ./day6p1
+	@cat input.txt | ./day6p1
 	@cat input.txt | ./day6p2
