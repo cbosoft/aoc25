@@ -25,7 +25,7 @@
            END-PERFORM.
            MOVE LS-I-R4(1:1) TO LS-O(1).
            COMPUTE WS-J = 2.
-           DISPLAY LS-I-R4(1:100).
+      *    DISPLAY LS-I-R4(1:100).
            PERFORM VARYING WS-I FROM 2 BY 1 UNTIL WS-I = 4000
              MOVE LS-I-R4(WS-I:1) TO WS-OP
              IF WS-OP EQUAL "*" OR WS-OP EQUAL "+"
@@ -36,5 +36,5 @@
              END-IF
            END-PERFORM.
            COMPUTE LS-CW(WS-K) = 4.
-           DISPLAY LS-T-O(1:10).
+      *    DISPLAY LS-T-O(1:10).
            EXIT PROGRAM.

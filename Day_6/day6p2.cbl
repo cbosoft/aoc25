@@ -66,7 +66,7 @@
       *        Going up...
                PERFORM VARYING WS-K FROM 1 BY 1 UNTIL WS-K = 5
                  COMPUTE WS-L = 4000*(4 - WS-K) + WS-M + WS-J + 1
-                 DISPLAY "L:" WS-L " >" WS-T-I(WS-L:1) "<"
+      *          DISPLAY "L:" WS-L " >" WS-T-I(WS-L:1) "<"
       *          * -> char = LS-T-I(WS-L).. is it blank?
                  IF WS-T-I(WS-L:1) NOT EQUAL " "
                    EVALUATE WS-N
@@ -95,7 +95,7 @@
                  WHEN 3
                    MOVE WS-DIGITS TO WS-D3(WS-I)
                END-EVALUATE
-               DISPLAY WS-DIGITS
+      *        DISPLAY WS-DIGITS
       *        END-IF
 
              END-PERFORM
@@ -131,10 +131,10 @@
                  WHEN "+"
                    ADD WS-SCRATCH2 TO WS-SCRATCH
                END-EVALUATE
-              DISPLAY "S2: " WS-SCRATCH2 " " WS-J " " WS-CW(WS-I)
+      *       DISPLAY "S2: " WS-SCRATCH2 " " WS-J " " WS-CW(WS-I)
              END-PERFORM
              ADD WS-SCRATCH TO WS-TOTAL
-             DISPLAY "S1:" WS-SCRATCH
+      *      DISPLAY "S1:" WS-SCRATCH
            END-PERFORM.
-           DISPLAY WS-TOTAL.
+           DISPLAY "Part2:" WS-TOTAL.
            STOP RUN.

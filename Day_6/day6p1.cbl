@@ -38,7 +38,7 @@
            COMPUTE WS-ICOL = 1.
            PERFORM VARYING WS-I FROM 1 BY 1 UNTIL WS-I = 4000
              MOVE WS-ROW(WS-I:1) TO WS-OP
-             DISPLAY WS-I ":" WS-OP
+      *      DISPLAY WS-I ":" WS-OP
              IF WS-OP EQUAL "*" OR WS-OP EQUAL "+"
                MOVE WS-OP TO WS-O-VALUE(WS-ICOL)
                ADD 1 TO WS-ICOL
@@ -47,11 +47,11 @@
 
            COMPUTE WS-TOTAL = 0.
            PERFORM VARYING WS-I FROM 1 BY 1 UNTIL WS-I = WS-ICOL
-             DISPLAY "A:" WS-A-VALUE(WS-I)
-             DISPLAY "B:" WS-B-VALUE(WS-I)
-             DISPLAY "C:" WS-C-VALUE(WS-I)
-             DISPLAY "D:" WS-D-VALUE(WS-I)
-             DISPLAY "O:" WS-O-VALUE(WS-I)
+      *      DISPLAY "A:" WS-A-VALUE(WS-I)
+      *      DISPLAY "B:" WS-B-VALUE(WS-I)
+      *      DISPLAY "C:" WS-C-VALUE(WS-I)
+      *      DISPLAY "D:" WS-D-VALUE(WS-I)
+      *      DISPLAY "O:" WS-O-VALUE(WS-I)
 
 
              EVALUATE WS-O-VALUE(WS-I)
@@ -68,10 +68,10 @@
                  ADD WS-C-VALUE(WS-I) TO WS-SCRATCH
                  ADD WS-D-VALUE(WS-I) TO WS-SCRATCH
              END-EVALUATE
-             DISPLAY "Scratch: " WS-SCRATCH
+      *      DISPLAY "Scratch: " WS-SCRATCH
              ADD WS-SCRATCH TO WS-TOTAL
 
            END-PERFORM.
            MOVE WS-TOTAL TO WS-TOTAL-STR.
-           DISPLAY "Total: " WS-TOTAL-STR.
+           DISPLAY "Part1: " WS-TOTAL-STR.
            STOP RUN.
