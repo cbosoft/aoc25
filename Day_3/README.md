@@ -1,10 +1,10 @@
 # Day 3
 Let's `go`!
 
-Run by abusing an echoy cat:
+Run by abusing an echoy cat. Requires [go](https://go.dev/dl/).
 ```bash
-echo part1 | cat - test.txt | go run .
-echo part2 | cat - test.txt | go run .
+echo part1 | cat - input.txt | go run .
+echo part2 | cat - input.txt | go run .
 ```
 
 # Part 1
