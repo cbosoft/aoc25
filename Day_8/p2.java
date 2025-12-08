@@ -49,14 +49,14 @@ public class DecorationProject {
   public HashSet<Integer> free;
   public HashSet<Integer> connected;
 
-  public Double[][] distances;
+  public ArrayList<Connection> possible_connections;
 
   public DecorationProject() {
     this.boxes = new ArrayList<JunctionBox>();
     this.free = new HashSet<Integer>();
     this.connected = new HashSet<Integer>();
     this.circuits = new ArrayList<Circuit>();
-    this.distances = new Double[1][1];
+    this.possible_connections = new ArrayList<Connection>();
   }
 
   public void add(Double x, Double y, Double z) {
@@ -82,44 +82,21 @@ public class DecorationProject {
   public void compute_distance_matrix() {
     Integer n = this.boxes.size();
     Double[][] distances = new Double[n][n];
+    ArrayList<Connection> connections = new ArrayList<Connection>();
     for (Integer i = 0; i < n; i++) {
       for (Integer j = 0; j < i; j++) {
         Double distance = this.calc_distance(i, j);
-        distances[i][j] = distance;
-        distances[j][i] = distance;
-      }
-    }
-    this.distances = distances;
-  }
-
-  public Connection next_connection(Double min_distance) {
-    // find point in "left" closest to those in "right"
-    ArrayList<Connection> pairs = new ArrayList<Connection>();
-    for (Integer i = 0; i < this.boxes.size(); i++) {
-      for (Integer j = 0; j < i; j++) {
-
-        if (i == j)
-          continue;
-
-        Double distance = this.distances[i][j];
-        if (distance <= min_distance)
-          continue;
-
         Connection conn = new Connection(i, j, distance);
-        pairs.add(conn);
+        connections.add(conn);
       }
     }
-    pairs.sort((l, r) -> { return l.distance.compareTo(r.distance); });
-    return pairs.get(0);
+
+    connections.sort((a, b) -> { return a.distance.compareTo(b.distance); });
+    this.possible_connections = connections;
   }
 
-  public Connection connect_one(Connection prior) {
-    Double min_distance = 0.0;
-    if (prior != null) {
-      min_distance = prior.distance;
-    }
-
-    Connection next_conn = this.next_connection(min_distance);
+  public Connection connect_one() {
+    Connection next_conn = this.possible_connections.remove(0);
     JunctionBox boxi = this.boxes.get(next_conn.i);
     JunctionBox boxj = this.boxes.get(next_conn.j);
     this.free.remove(next_conn.i);
@@ -186,14 +163,11 @@ public class p2 {
     Integer n_circuits = project.circuits.size();
     Integer n_free = project.free.size();
     while ((n_circuits > 1) || (n_free > 0)) {
-      conn = project.connect_one(conn);
+      conn = project.connect_one();
       ArrayList<Circuit> nondefunct = (ArrayList<Circuit>) project.circuits.clone();
       nondefunct.removeIf((v) -> { return v.box_indices.size() < 2; });
       n_circuits = nondefunct.size();
       n_free = project.free.size();
-      System.out.printf("n circuits: %d, n free: %d\n", n_circuits, n_free);
-      JunctionBox a = project.boxes.get(conn.i);
-      JunctionBox b = project.boxes.get(conn.j);
     }
 
     JunctionBox a = project.boxes.get(conn.i);
