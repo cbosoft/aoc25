@@ -3,6 +3,15 @@
 
 Using [sqscript](https://github.com/cbosoft/sqscript) to run SQL script, pass input, and return results. A small bit of python doesn't count if it just passes the input in, right?
 
+Using a run script to facilitate preprocessor for part 2 (and timing for debugging).
+```bash
+bash run.sh p1.sql input.txt
+bash run.sh p2.sql input.txt
+
+# check runtime
+# time bash run.sh p1.sql input.txt
+```
+
 # Part 1
 Run "tachyon beam" state machine, count splits.
 
