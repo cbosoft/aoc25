@@ -1,6 +1,12 @@
 # Day 5
 I'm `scheme`ing here, not trying to be`guile` you.
 
+Running requires [GNU guile](https://www.gnu.org/software/guile/download/) and [make](https://www.gnu.org/software/make/#download).
+
+```bash
+make run
+```
+
 # Part 1
 Read in ranges, find if subsequent list of numbers is within the given ranges.
 
